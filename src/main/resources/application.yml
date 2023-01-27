@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+  data:
+    cassandra:
+      keyspace-name: empkeyspace
+      username: <AstraDB_Username>
+      password: <AstraDB_Password>
+      schema-action: create-if-not-exists
+      request:
+        timeout: 10s
+      connection:
+        connect-timeout: 10s
+        init-query-timeout: 10s
+datastax.astra:
+  secure-connect-bundle: <secure-connect-<database_name>.zip> # Also, add it in under resources
+
+astra.db:
+  id: <astradb_id>
+  region: <region>
+  keyspace: empkeyspace
+  application.token: <token>
+
+PRODUCER_TOPIC: app_updates
